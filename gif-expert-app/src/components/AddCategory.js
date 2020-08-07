@@ -1,16 +1,22 @@
 import React, {useState} from 'react'
+import PropTypes from 'prop-types'
 
-export const AddCategory = () => {
 
-  const [inputValue, setInputValue] = useState("Hola Mundo");
+export const AddCategory = ( { setCategories } ) => {
+
+  const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value)
   }
 
-  const handleSumbit = ( e) => {
+  const handleSumbit = ( e ) => {
     e.preventDefault();
-    console.log("listo")
+
+    if( inputValue.trim().length > 2) {
+      setCategories(prev => [...prev, inputValue])
+      setInputValue('')
+    }
   }
   return (
     <form onSubmit={handleSumbit}>      
@@ -21,4 +27,8 @@ export const AddCategory = () => {
        />
     </form>
   )
+}
+
+AddCategory.propTypes = {
+  setCategories: PropTypes.func.isRequired
 }
