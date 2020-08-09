@@ -6,3 +6,4 @@ Projects made with Udemy [Course](https://www.udemy.com/course/react-cero-expert
 
 [Link to project](https://react-gif-expert.netlify.app/)
 
+![Imgur](https://i.imgur.com/1odUazH.png)
