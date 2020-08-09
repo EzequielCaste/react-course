@@ -2,8 +2,15 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 
+#root {
+  width: 50%;
+  margin: 5rem auto;
+}
 body {
-  padding: 60px;
+  margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 input {
@@ -30,6 +37,9 @@ input {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+#root h2 {
+  text-align: center;
 }
 footer {
   text-align: center; 
