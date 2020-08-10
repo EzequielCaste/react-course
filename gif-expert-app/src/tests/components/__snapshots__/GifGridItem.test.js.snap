@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Prueba de renderización <GifGridItem /> debe mostrar <GifGridItem /> 1`] = `
+exports[`Pruebas en <GifGridItem /> debe mostrar <GifGridItem /> 1`] = `
 <div
   className="card animate__animated animate__fadeIn"
 >
