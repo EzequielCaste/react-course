@@ -12,14 +12,14 @@ export const AddCategory = ( { setCategories } ) => {
 
   const handleSumbit = ( e ) => {
     e.preventDefault();
-
     if( inputValue.trim().length > 2) {
-      setCategories(prev => [ inputValue, ...prev])
+      setCategories( prev => [ inputValue, ...prev])
       setInputValue('')
     }
   }
   return (
     <form onSubmit={handleSumbit}>      
+      <p>{ inputValue }</p>
       <input 
         onChange={handleInputChange}
         type="text"
