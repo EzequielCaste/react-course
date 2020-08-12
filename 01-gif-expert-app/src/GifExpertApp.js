@@ -23,8 +23,6 @@ export const GifExpertApp = ({ defaultCategories = []}) => {
           )
         }
       </ol>
-
-
     </>
   )
 }
