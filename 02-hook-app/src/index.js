@@ -9,9 +9,14 @@ import ReactDOM from 'react-dom';
 // import { FocusScreen } from './components/04-useRef/FocusScreen';
 // import { ExampleRef } from './components/04-useRef/ExampleRef';
 // import { Layout } from './components/05-useLayoutEffect/LayoutEffect';
-import { MemoHook } from './components/06-memos/MemoHook';
+// import { MemoHook } from './components/06-memos/MemoHook';
+// import { CallBackHook } from './components/06-memos/CallBackHook';
+// import { Padre } from './components/07-tarea-memo/Padre'
+import { TodoApp } from './components/08-useReducer/TodoApp';
 
 ReactDOM.render( 
-    <MemoHook />  ,    
+    <TodoApp />,            
   document.getElementById('root')
 );
+
+
