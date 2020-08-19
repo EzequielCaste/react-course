@@ -42,9 +42,9 @@ export const TodoApp = () => {
     });
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // }
   return (
     <div>
       <h1>TodoApp ( {todos.length} )</h1>
