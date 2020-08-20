@@ -13,7 +13,7 @@ import { HomeScreen } from './HomeScreen';
 export const AppRouter = () => {
   return (
     <Router>
-      <div>
+      <div className="container">
         <NavBar />
         <Switch>
           <Route path="/about" component={ AboutScreen } />
