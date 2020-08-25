@@ -7,6 +7,8 @@ import { DcScreen } from '../components/dc/DcScreen'
 import { SearchScreen } from '../components/search/SearchScreen'
 
 export const DashboardRoutes = () => {
+
+  
   return (
     <>
 
