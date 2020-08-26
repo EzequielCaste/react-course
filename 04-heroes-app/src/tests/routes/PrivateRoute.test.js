@@ -16,7 +16,6 @@ describe('Pruebas en <PrivateRoute />', () => {
 
   test('debe mostrar el componente si está autenticado y guardar localStorage', () => {
 
-
     const wrapper = mount(
       <MemoryRouter>
         <PrivateRoute
@@ -30,6 +29,22 @@ describe('Pruebas en <PrivateRoute />', () => {
 
     expect( wrapper.find('span').exists() ).toBe(true);
 
+    expect( localStorage.setItem ).toHaveBeenCalledWith( "lastPath", "/marvel")
+  })
+
+  test('debe bloquear el componente si no está autenticado', () => {
+    const wrapper = mount(
+      <MemoryRouter>
+        <PrivateRoute
+          isAuthenticated={false}
+          component={ () => <span>Listo!</span>}
+          {...props}
+
+        />
+      </MemoryRouter>
+    )
+
+    expect( wrapper.find('span').exists() ).toBe(false);
     expect( localStorage.setItem ).toHaveBeenCalledWith( "lastPath", "/marvel")
   })
 })
