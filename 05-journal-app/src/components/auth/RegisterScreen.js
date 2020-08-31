@@ -25,13 +25,13 @@ export const RegisterScreen = () => {
         <input 
           className="auth__input"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           name="password"
         />
         <input 
           className="auth__input"
           type="password"
-          placeholder="confirm password"
+          placeholder="Confirm Password"
           name="password2"
         />
 
@@ -46,7 +46,6 @@ export const RegisterScreen = () => {
 
        
       <Link className="link" to="/auth/login">
-
         Already registered?
       </Link>
 
