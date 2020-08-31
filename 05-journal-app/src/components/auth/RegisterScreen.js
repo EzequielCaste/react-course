@@ -4,6 +4,7 @@ import validator from 'validator';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { setError, removeError } from '../../actions/ui';
+import { startRegisterEmailPasswordName } from '../../actions/auth';
 
 export const RegisterScreen = () => {
 
@@ -23,7 +24,7 @@ export const RegisterScreen = () => {
     e.preventDefault();
     
     if ( isFormValid() ) {
-      console.log("Formulario Valido");
+      dispatch( startRegisterEmailPasswordName(email, password, name) );
     }
 
 
