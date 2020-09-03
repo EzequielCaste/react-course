@@ -1,6 +1,7 @@
 import { db } from "../firebase/firebase-config";
 import { types } from "../types/types";
 import { loadNotes } from "../helpers/loadNotes";
+import Swal from "sweetalert2";
 
 
 // asyncrona lleva return y el callback
@@ -57,6 +58,15 @@ export const startSaveNote = ( note ) => {
 
     await db.doc(`${ uid }/journal/notes/${ note.id }`).update( noteToFirestore )
 
+    dispatch( refreshNote( note.id, note ));
+    Swal.fire('Saved', note.title, 'success' );
 
   }
 }
+
+export const refreshNote = ( id, note) => ({
+  type: types.notesUpdated,
+  payload: {
+    id, note
+  }
+})
