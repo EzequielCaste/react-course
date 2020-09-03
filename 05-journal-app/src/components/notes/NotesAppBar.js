@@ -1,12 +1,18 @@
 import React from 'react'
 import moment from 'moment'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { startSaveNote } from '../../actions/notes';
 
 export const NotesAppBar = () => {
 
   const { date } = useSelector( state => state.notes.active );
+  const dispatch = useDispatch();
+  const { active } = useSelector( state => state.notes );
 
+  const handleSave = () => {
+   dispatch( startSaveNote( active ) );
 
+  }
 
   return (
     <div className="notes__appbar">
@@ -16,7 +22,10 @@ export const NotesAppBar = () => {
         <button className="btn">
           Picture
         </button>
-        <button className="btn">
+        <button 
+          className="btn"
+          onClick={ handleSave }
+        >
           Save
         </button>
       </div>

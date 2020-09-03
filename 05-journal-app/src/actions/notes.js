@@ -24,7 +24,7 @@ export const startNewNote = () => {
 export const activeNote = ( id, note ) => {
  
   console.log(id, note);
-  
+
   return { 
     type: types.notesActive,
     payload: {
@@ -45,4 +45,18 @@ export const startLoadingNotes = ( uid ) => {
 export const setNotes = ( notes ) => ({
   type: types.notesLoad,
   payload: notes
-})
+});
+
+export const startSaveNote = ( note ) => {
+  return async( dispatch, getState) => {
+
+    const uid = getState().auth.uid;  
+
+    const noteToFirestore = { ...note };
+    delete noteToFirestore.id;
+
+    await db.doc(`${ uid }/journal/notes/${ note.id }`).update( noteToFirestore )
+
+
+  }
+}
