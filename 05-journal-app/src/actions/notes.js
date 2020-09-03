@@ -21,13 +21,18 @@ export const startNewNote = () => {
   }
 }
 
-export const activeNote = ( id, note ) => ({
-  type: types.notesActive,
-  payload: {
-    id,
-    ...note
+export const activeNote = ( id, note ) => {
+ 
+  console.log(id, note);
+  
+  return { 
+    type: types.notesActive,
+    payload: {
+      id,
+      ...note
+    }
   }
-})
+}  
 
 export const startLoadingNotes = ( uid ) => {
   return async( dispatch ) => {
