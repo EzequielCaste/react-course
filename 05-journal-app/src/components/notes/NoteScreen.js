@@ -44,6 +44,7 @@ export const NoteScreen = () => {
           name="title"
           className="notes__title-input"
           value={ title }
+          placeholder="Note title"
         />
 
         <textarea           
@@ -51,6 +52,7 @@ export const NoteScreen = () => {
           name="body"
           className="notes__textarea"
           onChange={ handleInputChange }
+          placeholder="Note body"
         ></textarea>
 
       
