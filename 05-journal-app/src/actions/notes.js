@@ -2,6 +2,7 @@ import { db } from "../firebase/firebase-config";
 import { types } from "../types/types";
 import { loadNotes } from "../helpers/loadNotes";
 import Swal from "sweetalert2";
+import { fileUpload } from "../helpers/fileUpload";
 
 
 // asyncrona lleva return y el callback
@@ -24,9 +25,7 @@ export const startNewNote = () => {
 
 export const activeNote = ( id, note ) => {
  
-  console.log(id, note);
-
-  return { 
+ return { 
     type: types.notesActive,
     payload: {
       id,
@@ -69,4 +68,15 @@ export const refreshNote = ( id, note) => ({
   payload: {
     id, note
   }
-})
+});
+
+export const startUploading = ( file ) => {
+  return async ( dispatch, getState ) => {
+
+    const { active: activeNote } = getState().notes;
+
+    const fileUrl = await fileUpload( file );
+
+    console.log(fileUrl);
+  }
+}
