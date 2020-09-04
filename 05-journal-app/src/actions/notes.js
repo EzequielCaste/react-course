@@ -52,6 +52,10 @@ export const startSaveNote = ( note ) => {
 
     const uid = getState().auth.uid;  
 
+    if ( !note.url ) {
+      delete note.url;
+    }
+
     const noteToFirestore = { ...note };
     delete noteToFirestore.id;
 
@@ -75,8 +79,22 @@ export const startUploading = ( file ) => {
 
     const { active: activeNote } = getState().notes;
 
+    Swal.fire({
+     title: 'Uploading',
+     text: 'Please wait',
+     allowOutsideClick: false,
+     onBeforeOpen: () => {
+       Swal.showLoading();
+     } 
+    })
+
     const fileUrl = await fileUpload( file );
 
-    console.log(fileUrl);
+    activeNote.url = fileUrl;
+
+    dispatch( startSaveNote( activeNote ));
+
+    Swal.close();
+
   }
 }

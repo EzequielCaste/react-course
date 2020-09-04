@@ -10,7 +10,7 @@ export const JournalEntry = ({ id, title, body, date, url  }) => {
   const dispatch = useDispatch();
 
   const handleEntryClick = () => {    
-    dispatch( activeNote(id, {title, body, date}) );
+    dispatch( activeNote(id, {title, body, date, url}) );
   }
 
     return (

@@ -53,7 +53,7 @@ export const NoteScreen = () => {
         && (
           <div className="notes__image">
             <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Gloomy_Forest.jpg/275px-Gloomy_Forest.jpg"
+              src={ note.url }
               alt="bosque"
             />
           </div>
