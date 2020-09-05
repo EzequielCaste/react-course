@@ -13,7 +13,23 @@ const firebaseConfig = {
   measurementId: "G-CVY2QFDY9N"
 };
 
-firebase.initializeApp(firebaseConfig);
+const firebaseConfigTesting = {
+  apiKey: "AIzaSyCa-XeZTMAXjGy0Dbl6PFi4VbSJstFhLSU",
+  authDomain: "tests-76263.firebaseapp.com",
+  databaseURL: "https://tests-76263.firebaseio.com",
+  projectId: "tests-76263",
+  storageBucket: "tests-76263.appspot.com",
+  messagingSenderId: "491360047728",
+  appId: "1:491360047728:web:42d66d9d2a49439ce01ab5"
+};
+
+if ( process.env.NODE_ENV === "test" ) {
+  //testing 
+  firebase.initializeApp(firebaseConfigTesting);
+} else {
+  // dev/prod
+  firebase.initializeApp(firebaseConfig);
+}
 
  const db = firebase.firestore();
  const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
