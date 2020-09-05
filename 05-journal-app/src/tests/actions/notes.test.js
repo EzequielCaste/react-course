@@ -42,11 +42,8 @@ describe('Pruebas con las acciones de notes', () => {
     });
 
     const docId = actions[1].payload.id;
-    console.log(docId)
-
+    
     await db.doc(`/TESTING/journal/notes/${ docId }`).delete();
-
-
 
   })
 })
