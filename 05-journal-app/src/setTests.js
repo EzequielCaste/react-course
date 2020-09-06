@@ -4,3 +4,4 @@ import {createSerializer} from 'enzyme-to-json';
  
 expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
 Enzyme.configure({ adapter: new Adapter() });
+
