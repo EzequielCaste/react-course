@@ -11,15 +11,12 @@ import { firebase } from '../../firebase/firebase-config';
 import { login } from '../../actions/auth';
 import { AppRouter } from '../../routers/AppRouter';
 import { act } from 'react-dom/test-utils';
-import Swal from 'sweetalert2';
 
 jest.mock('../../actions/auth', () => ({
   login: jest.fn()
 }));
 
-jest.mock('sweetalert2', () => ({
-  fire: jest.fn()
-}));
+
 
 
 const middlewares = [thunk];
