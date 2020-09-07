@@ -10,18 +10,18 @@ export const LoginScreen = () => {
   const { loading } = useSelector( state => state.ui ); 
 
   const [ formValues, handleInputChange ] = useForm({
-    email: 'vic@gmail.com',
-    password: '123456'
+    email: '',
+    password: ''
   });
 
   const { email, password } = formValues;
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch( startLoginEmailPassword(email, password) )
+    dispatch( startLoginEmailPassword( email, password ) )
   }
 
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = () => {    
     dispatch( startGoogleLogin() );
   }
 
