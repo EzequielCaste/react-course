@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom';
 
