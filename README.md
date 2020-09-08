@@ -13,3 +13,9 @@ Projects made with Udemy [Course](https://www.udemy.com/course/react-cero-expert
 [Link to project](https://react-heroapp.netlify.app)
 
 ![Imgur](https://i.imgur.com/oJUoR0n.png)
+
+## 05-Journal App
+
+[Link to project](https://react-journal-app.netlify.app/)
+
+![Imgur](https://i.imgur.com/EjxDLyF.png)

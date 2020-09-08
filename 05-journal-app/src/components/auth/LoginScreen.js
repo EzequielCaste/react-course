@@ -10,8 +10,8 @@ export const LoginScreen = () => {
   const { loading } = useSelector( state => state.ui ); 
 
   const [ formValues, handleInputChange ] = useForm({
-    email: '',
-    password: ''
+    email: 'vic@gmail.com',
+    password: '123456'
   });
 
   const { email, password } = formValues;
@@ -37,7 +37,7 @@ export const LoginScreen = () => {
         <input 
           className="auth__input"
           type="text"
-          placeholder="Email"
+          placeholder="vic@gmail.com"
           name="email"
           autoComplete="off"
           value={email}
@@ -46,7 +46,7 @@ export const LoginScreen = () => {
         <input 
           className="auth__input"
           type="password"
-          placeholder="password"
+          placeholder=""
           name="password"
           value={ password }
           onChange={ handleInputChange }
