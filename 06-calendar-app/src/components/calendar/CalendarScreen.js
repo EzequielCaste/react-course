@@ -11,8 +11,9 @@ import { CalendarModal } from './CalendarModal';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { uiOpenModal } from '../../actions/ui';
 import { useDispatch, useSelector } from 'react-redux';
-import { eventSetActive } from '../../actions/events';
+import { eventSetActive, eventClearActiveEvent } from '../../actions/events';
 import { AddNewFab } from '../ui/AddNewFab';
+import { DeleteEventFab } from '../ui/DeleteEventFab';
 
 moment.locale('es');
 
@@ -24,8 +25,7 @@ export const CalendarScreen = () => {
 
   const dispatch = useDispatch();
    // leer store eventos
-   const { events } = useSelector( state => state.calendar );
-
+   const { events, activeEvent } = useSelector( state => state.calendar );
 
 
   const onEventDoubleClick = (e) => {   
@@ -49,10 +49,14 @@ export const CalendarScreen = () => {
       display: 'block',
       color: 'white'
     }
-
     return {
       style
     }
+  }
+
+  const onSelectedSlot = (e) => {
+    console.log(e);
+    dispatch( eventClearActiveEvent() );
   }
 
   return (
@@ -68,6 +72,8 @@ export const CalendarScreen = () => {
         onDoubleClickEvent={ onEventDoubleClick }
         onSelectEvent={ onSelectEvent }
         onView={ onViewChange }
+        onSelectSlot={ onSelectedSlot }
+        selectable={true}
         messages={ messages }
         eventPropGetter={ eventStyleGetter }
         components={{ 
@@ -78,6 +84,12 @@ export const CalendarScreen = () => {
       <CalendarModal />
 
       <AddNewFab onClick={ onEventDoubleClick }/>
+      
+      {
+        activeEvent &&
+        <DeleteEventFab />
+
+      }
 
     </div>
   )
