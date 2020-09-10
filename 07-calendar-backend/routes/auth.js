@@ -5,12 +5,14 @@ const router = Router();
 // host + /api/auth
 
 const { createUser, renewToken, loginUser } = require('../controllers/auth');
+const validarCampos = require('../middlewares/validar-campos');
 
 router.post('/new',
 [ 
   check('name', 'El nombre es obligatorio').not().isEmpty() , 
   check('email', 'El email es obligatorio').isEmail(),
-  check('password', 'El password debe ser de 6 caracteres').isLength(6) 
+  check('password', 'El password debe ser de 6 caracteres').isLength(6) ,
+  validarCampos
 ], 
 createUser 
 );
@@ -18,7 +20,8 @@ createUser
 router.post('/',
 [   
   check('email', 'El email es obligatorio').isEmail(),
-  check('password', 'El password debe ser de 6 caracteres').isLength(6) 
+  check('password', 'El password debe ser de 6 caracteres').isLength(6),
+  validarCampos
 ], 
 loginUser
 );
