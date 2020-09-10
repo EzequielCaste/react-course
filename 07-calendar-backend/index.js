@@ -5,7 +5,10 @@ const app = express();
 
 app.use( express.static('public') );
 
-
+// Rutas
+// auth
+app.use('/api/auth', require('./routes/auth') );
+// crud
 
 app.get('/', (req, res) => {
 
