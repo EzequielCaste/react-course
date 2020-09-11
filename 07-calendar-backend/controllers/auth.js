@@ -28,10 +28,8 @@ const createUser = async(req, res = response ) => {
    await usuario.save();
   //jwt
   const token = await generarJWT( usuario.id, usuario.name );
-
-
   
-   res.status(201).json({
+  res.status(201).json({
       ok: true,
       uid: usuario.id,
       name: usuario.name,

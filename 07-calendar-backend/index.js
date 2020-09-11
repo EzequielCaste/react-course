@@ -7,15 +7,14 @@ const app = express();
 
 dbConnection();
 
-app.use(cors);
-
+// app.use(cors);
 app.use( express.static('public') );
-
 app.use( express.json() );
+
+
 // Rutas
-// auth
 app.use('/api/auth', require('./routes/auth') );
-// crud
+app.use('/api/events', require('./routes/events') );
 
 app.get('/', (req, res) => {
   res.send();
