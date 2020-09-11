@@ -6,6 +6,7 @@ const router = Router();
 
 const { createUser, renewToken, loginUser } = require('../controllers/auth');
 const validarCampos = require('../middlewares/validar-campos');
+const { validarJWT } = require('../middlewares/validar-jwt');
 
 router.post('/new',
 [ 
@@ -26,7 +27,7 @@ router.post('/',
 loginUser
 );
 
-router.get('/renew', 
+router.get('/renew', validarJWT,
 renewToken 
 );
 

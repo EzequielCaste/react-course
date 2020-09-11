@@ -2,6 +2,7 @@ const { response } = require('express');
 const bcrypt = require('bcryptjs');
 const Usuario = require('../models/Usuario');
 const { generarJWT } = require('../helpers/jwt');
+const jwt = require('../helpers/jwt');
 
 
 const createUser = async(req, res = response ) => {
@@ -85,15 +86,19 @@ const loginUser = async(req, res = response ) => {
       msg: "Contactar al administrador"
     })
   }
-
-
  
 }
 
-const renewToken = (req, res = response ) => {
+const renewToken = async(req, res = response ) => {
+
+  const { uid, name } = req;
+  
+  const token = await generarJWT( uid, name);
+
 
   res.json({
-    ok: 'renew'
+    ok: true,
+    token
   })
 }
 
