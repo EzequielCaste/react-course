@@ -1,12 +1,11 @@
 const { response } = require('express');
+const bcrypt = require('bcryptjs');
 const Usuario = require('../models/Usuario');
 
 
 const createUser = async(req, res = response ) => {
   
  const { email, password } = req.body;
-
-
 
  try {
 
@@ -15,11 +14,14 @@ const createUser = async(req, res = response ) => {
   if ( usuario ) {
     return res.status(400).json({
       ok: false,
-      msg: 'Ya existe un usuario con ese email registrado'
+      msg: 'El usuario ya existe'
     })
   }
 
    usuario = new Usuario( req.body );
+
+   const salt = bcrypt.genSaltSync();
+   usuario.password = bcrypt.hashSync( password, salt);
 
    await usuario.save();
   
@@ -37,20 +39,46 @@ const createUser = async(req, res = response ) => {
 }
 
 
-const loginUser = (req, res = response ) => {
+const loginUser = async(req, res = response ) => {
 
   const { email, password } = req.body;
 
-  res.status(202).json({
-    email,
-    password
-  })
+  try {
 
-  res.json({
-      ok: 'login',
-      email,
-      password
-  })
+    const usuario = await Usuario.findOne( { email } );
+
+    if ( !usuario ) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'Usuario o contraseña incorrectas'
+      })
+    }
+
+    const validPassword = bcrypt.compareSync( password, usuario.password );
+
+    if ( !validPassword ) {
+      res.status(400).json({
+        ok: false,
+        mgg: 'Contactar al administrador'
+      })
+    }
+
+    res.json({
+      ok: true,
+      uid: usuario.id,
+      name: usuario.name
+    })
+
+    
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: "Contactar al administrador"
+    })
+  }
+
+
+ 
 }
 
 const renewToken = (req, res = response ) => {
