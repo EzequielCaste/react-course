@@ -1,10 +1,8 @@
 const { Router } = require('express');
-const router = Router();
-
 const { validarJWT } = require('../middlewares/validar-jwt');
-
 const { getEventos, crearEvento, actualizarEvento, eliminarEvento } = require('../controllers/events');
 
+const router = Router();
 router.use( validarJWT );
 
 // obtener eventos
