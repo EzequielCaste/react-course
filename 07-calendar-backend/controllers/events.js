@@ -90,14 +90,45 @@ const actualizarEvento = async( req, res = response ) => {
 
 }
 
-const eliminarEvento = ( req, res = response ) => {
+const eliminarEvento = async( req, res = response ) => {
 
-  res.json(
-    {
-      ok: true,
-      msg: "eliminar evento"
+  const eventoId = req.params.id;
+
+  try {
+
+    const evento = await Evento.findById( eventoId );
+    const uid = req.uid;
+
+    if( !evento ) {
+      res.status(404).json({
+        ok: false,
+        msg: "Evento no existe con ese ID"
+      })
+    } 
+
+    if ( evento.user.toString() !== uid ) {
+      return res.status(401).json({
+        ok: false,
+        msg: "No tiene privilegio de eliminar este evento"
+      });
     }
-  );  
+
+      
+    await Evento.findByIdAndDelete( eventoId );
+
+    res.json({
+      ok: true,
+      msg: 'Evento borrado.'
+    })
+
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Hable con el Administrador"
+    });    
+  }
 
 }
 
