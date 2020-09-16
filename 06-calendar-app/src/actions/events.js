@@ -9,7 +9,6 @@ export const eventStartAddNew = ( event ) => {
     const { uid, name } = getState().auth;
 
     try {
-
       const resp = await fetchConToken( 'events', event, 'POST' );
       const body = await resp.json();
       
@@ -18,12 +17,9 @@ export const eventStartAddNew = ( event ) => {
         event.user = { 
           _id: uid,
           name: name
-        }
-        console.log(event);
+        }      
         dispatch( eventAddNew( event ) );
-
       }
-
     } catch (error) {
       console.log(error);
     }
@@ -47,8 +43,7 @@ export const eventClearActiveEvent = () => ({
 export const eventStartUpdate = ( event ) => {
   return async(dispatch) => {
 
-    try {
-      
+    try {      
       const resp = await fetchConToken( `events/${ event.id }`, event, 'PUT' );
       const body = await resp.json();
 
@@ -57,7 +52,6 @@ export const eventStartUpdate = ( event ) => {
       } else {
         Swal.fire('Error', body.msg, 'error')
       }
-
     } catch (error) {
       console.log(error);
     }
@@ -71,10 +65,8 @@ const eventUpdated = ( event ) => ({
 
 export const eventStartDelete = ( event ) => {
   return async(dispatch, getState) => {
-
     const { id } = getState().calendar.activeEvent; 
-    try {
-      
+    try {      
       const resp = await fetchConToken( `events/${ id }`, {}, 'DELETE' );
       const body = await resp.json();
 
@@ -83,7 +75,6 @@ export const eventStartDelete = ( event ) => {
       } else {
         Swal.fire('Error', body.msg, 'error')
       }
-
     } catch (error) {
       console.log(error);
     }
@@ -96,14 +87,11 @@ const eventDeleted = () => ({
 
 export const eventStartLoading = () => {
  return async(dispatch) => {
-
   try {
     const resp = await fetchConToken( 'events' );
-    const body = await resp.json();
-    
+    const body = await resp.json();    
     const events = prepareEvents(body.eventos);    
     dispatch( eventLoaded( events ) );
-
   } catch (error) {
     console.log(error);
   }
@@ -114,3 +102,5 @@ const eventLoaded = (events) => ({
   type: types.eventLoaded,
   payload: events
 })
+
+export const eventLogout = () => ({ type: types.eventLogout });
