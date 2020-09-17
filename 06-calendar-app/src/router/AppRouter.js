@@ -5,11 +5,13 @@ import {
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { CalendarScreen } from "../calendar/CalendarScreen";
-import { LoginScreen } from "../auth/LoginScreen";
-import { startChecking } from "../../actions/auth";
+
+
 import { PublicRoute } from "./PublicRoutes";
 import { PrivateRoute } from "./PrivateRoutes";
+import { LoginScreen } from "../components/auth/LoginScreen";
+import { CalendarScreen } from "../components/calendar/CalendarScreen";
+import { startChecking } from "../actions/auth";
 
 export const AppRouter = () => {
 

@@ -64,7 +64,7 @@ const loginUser = async(req, res = response ) => {
     if ( !validPassword ) {
       res.status(400).json({
         ok: false,
-        mgg: 'Contactar al administrador'
+        msg: 'Contactar al administrador'
       })
     }
 

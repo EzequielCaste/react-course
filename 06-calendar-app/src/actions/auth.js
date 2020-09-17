@@ -5,6 +5,7 @@ import { eventLogout } from "./events";
 
 export const startLogin = (email, password) => {
   return async( dispatch ) => {
+
     const resp = await fetchSinToken( 'auth', { email, password }, 'POST' );
     const body = await resp.json();
 
@@ -15,7 +16,7 @@ export const startLogin = (email, password) => {
         uid: body.uid,
         name: body.name
       }) )
-    } else {
+    } else {     
       Swal.fire('Error', body.msg, 'error')
     }    
   }
@@ -45,8 +46,6 @@ export const startChecking = () => {
     const resp = await fetchConToken( 'auth/renew' );
     const body = await resp.json();
 
-    //console.log(body);
-
     if ( body.ok ) {
       localStorage.setItem('token', body.token );
       localStorage.setItem('token-init-date', new Date().getTime() );
@@ -56,7 +55,7 @@ export const startChecking = () => {
         name: body.name
       }) )
     } else {
-      Swal.fire('Error', body.msg, 'error');
+      // Swal.fire('Error3', body.msg, 'error');
       dispatch( checkingFinished() );
     }
   }
