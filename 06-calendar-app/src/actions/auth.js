@@ -56,8 +56,7 @@ export const startChecking = () => {
         uid: body.uid,
         name: body.name
       }) )
-    } else {
-      // Swal.fire('Error3', body.msg, 'error');
+    } else {      
       dispatch( checkingFinished() );
     }
   }
