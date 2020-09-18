@@ -10,8 +10,8 @@ import './login.css';
 export const LoginScreen = () => {
 
     const [ formLoginValue, handleLoginInputChange ] = useForm({
-        lEmail: 'eze@gmail.com',
-        lPassword: '123456'
+        lEmail: '',
+        lPassword: ''
     });
 
     const [ formRegisterValue, handleRegisterInputChange ] = useForm({
@@ -28,15 +28,15 @@ export const LoginScreen = () => {
     const dispatch = useDispatch();
 
     const handleLogin = ( e ) => {
-        e.preventDefault();       
+        e.preventDefault();           
         dispatch( startLogin( lEmail, lPassword ) );      
     }
 
     const handleRegister = ( e ) => {
         e.preventDefault();       
-       
+      
         if( rPassword1 !== rPassword2 ) {
-            Swal.fire('Error', 'Las contraseñas debe ser iguales', 'error');
+            return Swal.fire('Error', 'Las contraseñas debe ser iguales', 'error');
         } 
             
         dispatch( startRegister( rEmail, rPassword1, rName ));
