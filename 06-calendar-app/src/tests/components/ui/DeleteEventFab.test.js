@@ -28,6 +28,8 @@ const wrapper = mount(
 
   </Provider>
 )
+
+
 describe('Pruebas en <DeletEventFab />', () => {
 
   test('debe mostrarse correctamente', () => {   
