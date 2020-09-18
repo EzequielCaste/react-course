@@ -89,7 +89,7 @@ export const CalendarModal = () => {
     
     const momentStart = moment( start );
     const momentEnd = moment( end );
-
+    
     if ( momentStart.isSameOrAfter( momentEnd ) ) {
       return Swal.fire('Error', 'La fecha Fin debe ser mayor a la fecha de Inicio', 'error');      
     }
@@ -111,13 +111,13 @@ export const CalendarModal = () => {
 
   return (
     <Modal
-          isOpen={ modalOpen }
-          // onAfterOpen={afterOpenModal}
+          isOpen={ modalOpen }          
           onRequestClose={closeModal}
           style={customStyles}
           closeTimeoutMS={ 200 }
           className="modal"
           overlayClassName="modal-fondo"
+          ariaHideApp={ !process.env.NODE_ENV === 'test'}
         >
         <h1> { activeEvent ? 'Editar evento' : "Nuevo evento"  } </h1>
         <hr />
