@@ -19,3 +19,9 @@ Projects made with Udemy [Course](https://www.udemy.com/course/react-cero-expert
 [Link to project](https://react-journal-app.netlify.app/)
 
 ![Imgur](https://i.imgur.com/EjxDLyF.png)
+
+## 06-Calendar App - MERN Stack
+
+[Link to project](https://merncalendar-app.herokuapp.com/)
+
+![Imgur](https://i.imgur.com/aY01fVd.png)
